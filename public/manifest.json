@@ -1,0 +1,42 @@
+{
+  "short_name": "LegacyShield IT",
+  "name": "LegacyShield IT - Cybersecurity Solutions",
+  "description": "Securing Penang's Legacy: Proactive Protection Against Aging Technology",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0A2463",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": ["business", "security", "productivity"],
+  "screenshots": [
+    {
+      "src": "/images/screenshot1.jpg",
+      "type": "image/jpeg",
+      "sizes": "1280x720",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/screenshot2.jpg",
+      "type": "image/jpeg",
+      "sizes": "750x1334",
+      "form_factor": "narrow"
+    }
+  ]
+}

@@ -26,10 +26,12 @@ const Services = () => {
       title: "Phish-Risk Indexing",
       description: "Advanced algorithm that calculates phishing vulnerability scores based on email patterns and user behavior.",
       features: [
-        "Email pattern analysis",
-        "User behavior tracking",
-        "Risk score calculation",
-        "Automated alert system"
+        "Identifies suspicious email patterns and phishing attempts",
+        "Tracks employee click-through rates on malicious links",
+        "Generates vulnerability scores for each user",
+        "Real-time alerts when high-risk emails are detected",
+        "Monthly risk assessment reports with recommendations",
+        "Integration with email gateways for automatic filtering"
       ],
       color: "red"
     },
@@ -38,10 +40,12 @@ const Services = () => {
       title: "Compliance Auditing",
       description: "Full compliance services for PDPA (Malaysia) and international digital security standards.",
       features: [
-        "PDPA compliance checks",
-        "ISO 27001 preparation",
-        "Audit trail generation",
-        "Documentation support"
+        "Complete PDPA Malaysia compliance assessment and reporting",
+        "ISO 27001 certification preparation and gap analysis",
+        "Automated audit trail generation for all security events",
+        "Legal documentation support and compliance templates",
+        "Regular compliance status updates and recommendations",
+        "Regulatory change monitoring and impact assessment"
       ],
       color: "green"
     },
@@ -50,17 +54,19 @@ const Services = () => {
       title: "Vulnerability Dashboard",
       description: "Real-time React-based interface showing live security status and threat intelligence.",
       features: [
-        "Live threat monitoring",
-        "Interactive charts",
-        "Custom alert system",
-        "Mobile responsive"
+        "Real-time threat intelligence from global security networks",
+        "Interactive charts showing system vulnerabilities over time",
+        "Customizable alert thresholds and notification preferences",
+        "Mobile-responsive design for monitoring on the go",
+        "Executive summary dashboards for management reporting",
+        "Integration with existing security tools and SIEM systems"
       ],
       color: "purple"
     }
   ];
 
   return (
-    <section id="services" className="py-20 bg-gradient-to-b from-blue-50 to-white">
+    <section id="services" className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -70,11 +76,11 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Products & Services
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Comprehensive cybersecurity solutions designed specifically for Penang's SME landscape.
           </p>
         </motion.div>
@@ -88,10 +94,10 @@ const Services = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveService(index)}
-                className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                className={`px-6 py-3 rounded-full font-semibold transition-all shadow-lg ${
                   activeService === index
-                    ? `bg-${service.color}-600 text-white shadow-lg`
-                    : 'bg-white text-gray-700 shadow-md hover:shadow-lg'
+                    ? `bg-gradient-to-r from-${service.color}-600 to-${service.color}-700 text-white`
+                    : 'bg-gray-800 text-gray-400 hover:text-white border border-gray-700'
                 }`}
               >
                 <div className="flex items-center space-x-2">
@@ -107,22 +113,22 @@ const Services = () => {
             key={activeService}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-2xl shadow-2xl overflow-hidden"
+            className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-700"
           >
             <div className={`h-2 bg-gradient-to-r from-${services[activeService].color}-500 to-${services[activeService].color}-700`}></div>
             <div className="p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <h3 className="text-3xl font-bold text-gray-800 mb-2">
+                  <h3 className="text-3xl font-bold text-white mb-2">
                     {services[activeService].title}
                   </h3>
-                  <p className="text-lg text-gray-600">
+                  <p className="text-lg text-gray-400">
                     {services[activeService].description}
                   </p>
                 </div>
-                <div className={`p-4 rounded-xl bg-${services[activeService].color}-100`}>
+                <div className={`p-4 rounded-xl bg-${services[activeService].color}-500/20 border border-${services[activeService].color}-500/30`}>
                   {React.cloneElement(services[activeService].icon, {
-                    className: `h-12 w-12 text-${services[activeService].color}-600`
+                    className: `h-12 w-12 text-${services[activeService].color}-400`
                   })}
                 </div>
               </div>
@@ -130,7 +136,7 @@ const Services = () => {
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Features */}
                 <div>
-                  <h4 className="text-xl font-bold text-gray-800 mb-4">Key Features</h4>
+                  <h4 className="text-xl font-bold text-white mb-4">Key Features</h4>
                   <ul className="space-y-3">
                     {services[activeService].features.map((feature, index) => (
                       <motion.li
@@ -141,28 +147,31 @@ const Services = () => {
                         className="flex items-center space-x-3"
                       >
                         <div className={`w-2 h-2 rounded-full bg-${services[activeService].color}-500`}></div>
-                        <span className="text-gray-700">{feature}</span>
+                        <span className="text-gray-300">{feature}</span>
                       </motion.li>
                     ))}
                   </ul>
                 </div>
 
                 {/* Demo Preview */}
-                <div className={`bg-gradient-to-br from-${services[activeService].color}-50 to-white p-6 rounded-xl border border-${services[activeService].color}-100`}>
-                  <h4 className="text-xl font-bold text-gray-800 mb-4">Live Preview</h4>
-                  <div className="bg-gray-900 rounded-lg p-4">
+                <div className={`bg-gradient-to-br from-${services[activeService].color}-900/20 to-gray-900/50 p-6 rounded-xl border border-${services[activeService].color}-500/30`}>
+                  <h4 className="text-xl font-bold text-white mb-4">Live Preview</h4>
+                  <div className="bg-gray-950 rounded-lg p-4">
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center space-x-2">
                         <Zap className="h-4 w-4 text-green-400" />
                         <span className="text-white text-sm">Active Monitoring</span>
                       </div>
-                      <div className="text-xs text-green-400">● LIVE</div>
+                      <div className="text-xs text-green-400 flex items-center">
+                        <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                        LIVE
+                      </div>
                     </div>
                     <div className="space-y-2">
                       {[1, 2, 3].map((i) => (
                         <div key={i} className="flex items-center justify-between">
-                          <div className="w-24 text-xs text-gray-400">System {i}</div>
-                          <div className="flex-1 h-1.5 bg-gray-800 rounded-full overflow-hidden">
+                          <div className="w-24 text-xs text-gray-500">System {i}</div>
+                          <div className="flex-1 h-1.5 bg-gray-800 rounded-full overflow-hidden mx-3">
                             <motion.div
                               initial={{ width: 0 }}
                               animate={{ width: `${Math.random() * 100}%` }}
@@ -170,7 +179,7 @@ const Services = () => {
                               className={`h-full rounded-full bg-${services[activeService].color}-500`}
                             />
                           </div>
-                          <div className="w-12 text-right text-xs text-gray-400">
+                          <div className="w-12 text-right text-xs text-gray-500">
                             {Math.floor(Math.random() * 100)}%
                           </div>
                         </div>
@@ -188,10 +197,14 @@ const Services = () => {
                   { label: 'Uptime', value: '99.9%' },
                   { label: 'Clients', value: '500+' },
                 ].map((stat, index) => (
-                  <div key={index} className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-800">{stat.value}</div>
-                    <div className="text-sm text-gray-500">{stat.label}</div>
-                  </div>
+                  <motion.div 
+                    key={index}
+                    whileHover={{ scale: 1.05 }}
+                    className="text-center p-4 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-gray-600 transition-all"
+                  >
+                    <div className="text-2xl font-bold text-white">{stat.value}</div>
+                    <div className="text-sm text-gray-400">{stat.label}</div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -205,7 +218,7 @@ const Services = () => {
           viewport={{ once: true }}
           className="mt-20"
         >
-          <h3 className="text-3xl font-bold text-center mb-8 text-gray-800">
+          <h3 className="text-3xl font-bold text-center mb-8 text-white">
             Powered By Modern Technology
           </h3>
           <div className="flex flex-wrap justify-center gap-8">
@@ -219,11 +232,11 @@ const Services = () => {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                className="flex flex-col items-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-700 hover:border-gray-600"
               >
                 <div className="text-4xl mb-4">{tech.icon}</div>
-                <div className="font-bold text-gray-800">{tech.name}</div>
-                <div className="text-sm text-gray-500 mt-1">{tech.desc}</div>
+                <div className="font-bold text-white">{tech.name}</div>
+                <div className="text-sm text-gray-400 mt-1">{tech.desc}</div>
               </motion.div>
             ))}
           </div>

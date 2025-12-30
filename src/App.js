@@ -29,25 +29,18 @@ function App() {
   }, []);
 
   return (
-    <div className="relative bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="fixed inset-0 z-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style={{animationDelay: '4s'}}></div>
-      </div>
-
-      {}
+    <div className="relative bg-gray-900 overflow-hidden">
+      {/* Smaller Cursor Follow Effect */}
       <motion.div
-        className="fixed w-96 h-96 rounded-full bg-gradient-to-r from-blue-200/20 to-purple-200/20 pointer-events-none z-0"
+        className="fixed w-32 h-32 rounded-full bg-gradient-to-r from-blue-400/10 to-purple-400/10 pointer-events-none z-0 blur-xl"
         animate={{
-          x: mousePosition.x - 192,
-          y: mousePosition.y - 192,
+          x: mousePosition.x - 64,
+          y: mousePosition.y - 64,
         }}
         transition={{ type: "spring", stiffness: 150, damping: 15 }}
       />
 
-      {}
+      {/* Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform origin-left z-50"
         style={{ scaleX }}

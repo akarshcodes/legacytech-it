@@ -31,7 +31,6 @@ const ContactForm = () => {
     setStatus({ loading: true, success: false, error: false, message: '' });
 
     try {
-      // In production, replace with actual API endpoint
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {

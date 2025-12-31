@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { 
   Shield, Mail, Phone, MapPin, 
   Facebook, Twitter, Linkedin, Instagram,
-  Send, ChevronUp
+  Send, ChevronUp,
+  X
 } from 'lucide-react';
 
 const Footer = () => {
@@ -58,7 +59,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-6">Quick Links</h3>
             <ul className="space-y-3">
-              {['Home', 'About Us', 'Services', 'Pricing', 'Our Team', 'Contact'].map((item) => (
+              {['Home', 'About Us', 'Services', 'Pricing', 'Team', 'Contact'].map((item) => (
                 <li key={item}>
                   <a 
                     href={`#${item.toLowerCase().replace(' ', '-')}`}
@@ -121,19 +122,20 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Social Media & Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-700">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex space-x-6 mb-6 md:mb-0">
+        {/* Footer Bottom Section */}
+        <div className="mt-8 pt-8 border-t border-gray-700">
+          <div className="flex flex-col xl:flex-row justify-between items-center gap-6 mb-8">
+            {/* Social Media */}
+            <div className="flex space-x-6">
               {[
-                { icon: Facebook, label: 'Facebook', color: 'blue-600' },
-                { icon: Twitter, label: 'Twitter', color: 'blue-400' },
-                { icon: Linkedin, label: 'LinkedIn', color: 'blue-700' },
-                { icon: Instagram, label: 'Instagram', color: 'pink-600' },
+                { icon: Facebook, label: 'Facebook', color: 'blue-600',  url: 'https://facebook.com'},
+                { icon: Linkedin, label: 'LinkedIn', color: 'blue-700', url: 'https://linkedin.com' },
+                { icon: Instagram, label: 'Instagram', color: 'pink-600', url: 'https://instagram.com' },
               ].map((social) => (
                 <motion.a
                   key={social.label}
-                  href="#"
+                  href={social.url}
+                  target="_blank"
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   className={`bg-gray-800 p-2 rounded-lg hover:bg-${social.color} transition-colors`}
                   aria-label={social.label}
@@ -143,11 +145,24 @@ const Footer = () => {
               ))}
             </div>
 
-            <div className="text-gray-400 text-center mb-6 md:mb-0">
-              <p>© 2024 LegacyShield IT Sdn Bhd. All rights reserved.</p>
-              <p className="text-sm mt-1">Company Registration: 20240123456-X</p>
+            {/* Certifications & Operating Hours */}
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="text-center md:text-left flex flex-col md:flex-row items-center gap-3">
+                <span className="text-sm text-gray-400">Certified By:</span>
+                <div className="flex items-center space-x-2">
+                  <div className="px-3 py-1 bg-gray-800 rounded text-xs">MCMC</div>
+                  <div className="px-3 py-1 bg-gray-800 rounded text-xs">ISO 27001</div>
+                  <div className="px-3 py-1 bg-gray-800 rounded text-xs">PDPA</div>
+                </div>
+              </div>
+              <div className="hidden md:block w-px h-6 bg-gray-700"></div>
+              <div className="text-center md:text-left flex flex-col md:flex-row items-center gap-2">
+                <span className="text-sm text-gray-400">Operating Hours:</span>
+                <span className="text-sm">Mon-Fri: 9AM-6PM • Sat: 9AM-1PM</span>
+              </div>
             </div>
 
+            {/* Back to Top */}
             <button
               onClick={scrollToTop}
               className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
@@ -156,21 +171,11 @@ const Footer = () => {
               <ChevronUp className="h-5 w-5" />
             </button>
           </div>
-        </div>
 
-        {/* Certifications */}
-        <div className="mt-8 flex flex-wrap justify-center items-center gap-6">
-          <div className="text-center">
-            <div className="text-sm text-gray-400 mb-1">Certified By</div>
-            <div className="flex items-center space-x-2">
-              <div className="px-3 py-1 bg-gray-800 rounded text-xs">MCMC</div>
-              <div className="px-3 py-1 bg-gray-800 rounded text-xs">ISO 27001</div>
-              <div className="px-3 py-1 bg-gray-800 rounded text-xs">PDPA</div>
-            </div>
-          </div>
-          <div className="text-center">
-            <div className="text-sm text-gray-400 mb-1">Operating Hours</div>
-            <div className="text-sm">Mon-Fri: 9AM-6PM • Sat: 9AM-1PM</div>
+          {/* Copyright */}
+          <div className="text-gray-400 text-center text-sm border-t border-gray-800 pt-8">
+            <p>© 2026 LegacyShield IT Sdn Bhd. All rights reserved.</p>
+            <p className="mt-1">Company Registration: 20260123456-X</p>
           </div>
         </div>
       </div>

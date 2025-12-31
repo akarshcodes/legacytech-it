@@ -40,50 +40,59 @@ const About = () => {
                 stat: '43%',
                 title: 'of Attacks',
                 description: 'Small and medium enterprises are now the primary targets for nearly half of all global cyber incidents.',
-                icon: <AlertTriangle className="h-8 w-8" />,
+                icon: <AlertTriangle className="h-20 w-20" />,
                 color: 'red'
               },
               {
                 stat: 'RM 300K',
                 title: 'Liability',
                 description: 'Penalties for digital negligence and PDPA violations can result in significant legal fines and reputation loss.',
-                icon: <TrendingUp className="h-8 w-8" />,
+                icon: <TrendingUp className="h-20 w-20" />,
                 color: 'orange'
               },
               {
                 stat: '300%',
                 title: 'Higher Risk',
                 description: 'Unpatched systems are three times more likely to be exploited by automated ransomware compared to modern, secured infrastructure.',
-                icon: <Shield className="h-8 w-8" />,
+                icon: <Shield className="h-20 w-20" />,
                 color: 'yellow'
               },
               {
                 stat: '90%',
                 title: 'Prevention',
                 description: 'Proactive patch management and basic digital hygiene stop the vast majority of common security breaches.',
-                icon: <CheckCircle className="h-8 w-8" />,
+                icon: <CheckCircle className="h-20 w-20" />,
                 color: 'green'
               }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className={`relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-${item.color}-500/30 shadow-xl hover:shadow-${item.color}-500/20 transition-all`}
-              >
-                <div className={`w-16 h-16 bg-${item.color}-500/20 rounded-xl flex items-center justify-center mb-4 text-${item.color}-400`}>
-                  {item.icon}
-                </div>
-                <div className={`text-5xl font-bold mb-2 bg-gradient-to-r from-${item.color}-400 to-${item.color}-600 bg-clip-text text-transparent`}>
-                  {item.stat}
-                </div>
-                <div className="text-xl font-bold text-white mb-3">{item.title}</div>
-                <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
-              </motion.div>
-            ))}
+            ].map((item, index) => {
+              const colors = {
+                red:{border:'border-red-500/30', shadow:'hover:shadow-red-500/20',text:'text-red-400', from:'from-red-400', to:'to-red-600'},
+                orange:{border:'border-orange-500/30', shadow:'hover:shadow-orange-500/20', text:'text-orange-400', from:'from-orange-400', to:'to-orange-600'},
+                yellow:{border:'border-yellow-500/30', shadow:'hover:shadow-yellow-500/20',text:'text-yellow-400', from:'from-yellow-400', to:'to-yellow-600'},
+                green:{border:'border-green-500/30', shadow:'hover:shadow-green-500/20', text:'text-green-400', from:'from-green-400', to:'to-green-600'},
+              }[item.color];
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -10 }}
+                  className={`relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border ${colors.border} shadow-xl ${colors.shadow} transition-all`}
+                >
+                  <div className={`w-16 h-16 ${colors.bg} rounded-xl flex items-center justify-center mb-4 ${colors.text}`}>
+                    {item.icon}
+                  </div>
+                  <div className={`text-5xl font-bold mb-2 bg-gradient-to-r ${colors.from} ${colors.to} bg-clip-text text-transparent`}>
+                    {item.stat}
+                  </div>
+                  <div className="text-xl font-bold text-white mb-3">{item.title}</div>
+                  <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 

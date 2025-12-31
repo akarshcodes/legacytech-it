@@ -4,7 +4,7 @@ import { Shield } from 'lucide-react';
 
 const Hero = () => {
   const scrollToServices = () => {
-    document.getElementById('services')?.scrollTo({ behavior: 'smooth' });
+    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -139,10 +139,10 @@ const Hero = () => {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-8 right-20 z-10"
       >
-        <div className="text-gray-400 text-sm mb-2">Scroll to explore</div>
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full mx-auto">
+        <div className="text-gray-400 text-sm mb-2 text-center">Scroll to explore</div>
+        <div className="w-6 h-10 border-2 border-gray-400 rounded-full ml-auto mr-0">
           <div className="w-1 h-3 bg-gray-400 rounded-full mx-auto mt-2 animate-bounce"></div>
         </div>
       </motion.div>

@@ -7,6 +7,44 @@ import {
 
 const Services = () => {
   const [activeService, setActiveService] = useState(0);
+  const colorVariants = {
+    blue: {
+      btn: 'from-blue-600 to-blue-450',
+      line: 'from-blue-600 to-blue-450',
+      box: 'bg-blue-500/20 border-blue-500/30',
+      txt: 'text-blue-400',
+      dot: 'bg-blue-500',
+      demoFrom: 'from-blue-900/20',
+      demoBorder: 'border-blue-500/30'
+    },
+    red: {
+      btn: 'from-red-600 to-red-450',
+      line: 'from-red-600 to-red-450',
+      box: 'bg-red-500/20 border-red-500/30',
+      txt: 'text-red-400',
+      dot: 'bg-red-500',
+      demoFrom: 'from-red-900/20',
+      demoBorder: 'border-red-500/30'
+    },
+    green: {
+      btn: 'from-green-600 to-green-450',
+      line: 'from-green-600 to-green-450',
+      box: 'bg-green-500/20 border-green-500/30',
+      txt: 'text-green-400',
+      dot: 'bg-green-500',
+      demoFrom: 'from-green-900/20',
+      demoBorder: 'border-green-500/30'
+    },
+    purple: {
+      btn: 'from-purple-600 to-purple-450',
+      line: 'from-purple-600 to-purple-450',
+      box: 'bg-purple-500/20 border-purple-500/30',
+      txt: 'text-purple-400',
+      dot: 'bg-purple-500',
+      demoFrom: 'from-purple-900/20',
+      demoBorder: 'border-purple-500/30'
+    }
+  };
 
   const services = [
     {
@@ -65,6 +103,8 @@ const Services = () => {
     }
   ];
 
+  const activeColors = colorVariants[services[activeService].color];
+
   return (
     <section id="services" className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -94,9 +134,10 @@ const Services = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveService(index)}
+                // Use the 'btn' variant from our lookup
                 className={`px-6 py-3 rounded-full font-semibold transition-all shadow-lg ${
                   activeService === index
-                    ? `bg-gradient-to-r from-${service.color}-600 to-${service.color}-700 text-white`
+                    ? `bg-gradient-to-r ${colorVariants[service.color].btn} text-white`
                     : 'bg-gray-800 text-gray-400 hover:text-white border border-gray-700'
                 }`}
               >
@@ -115,7 +156,9 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-700"
           >
-            <div className={`h-2 bg-gradient-to-r from-${services[activeService].color}-500 to-${services[activeService].color}-700`}></div>
+            {/* Top Divider Line */}
+            <div className={`h-2 bg-gradient-to-r ${activeColors.line}`}></div>
+            
             <div className="p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
@@ -126,9 +169,10 @@ const Services = () => {
                     {services[activeService].description}
                   </p>
                 </div>
-                <div className={`p-4 rounded-xl bg-${services[activeService].color}-500/20 border border-${services[activeService].color}-500/30`}>
+                {/* Icon Container */}
+                <div className={`p-4 rounded-xl border ${activeColors.box}`}>
                   {React.cloneElement(services[activeService].icon, {
-                    className: `h-12 w-12 text-${services[activeService].color}-400`
+                    className: `h-12 w-12 ${activeColors.txt}`
                   })}
                 </div>
               </div>
@@ -146,7 +190,8 @@ const Services = () => {
                         transition={{ delay: index * 0.1 }}
                         className="flex items-center space-x-3"
                       >
-                        <div className={`w-2 h-2 rounded-full bg-${services[activeService].color}-500`}></div>
+                        {/* Feature Bullet */}
+                        <div className={`w-2 h-2 rounded-full ${activeColors.dot}`}></div>
                         <span className="text-gray-300">{feature}</span>
                       </motion.li>
                     ))}
@@ -154,7 +199,7 @@ const Services = () => {
                 </div>
 
                 {/* Demo Preview */}
-                <div className={`bg-gradient-to-br from-${services[activeService].color}-900/20 to-gray-900/50 p-6 rounded-xl border border-${services[activeService].color}-500/30`}>
+                <div className={`bg-gradient-to-br ${activeColors.demoFrom} to-gray-900/50 p-6 rounded-xl border ${activeColors.demoBorder}`}>
                   <h4 className="text-xl font-bold text-white mb-4">Live Preview</h4>
                   <div className="bg-gray-950 rounded-lg p-4">
                     <div className="flex items-center justify-between mb-4">
@@ -176,7 +221,8 @@ const Services = () => {
                               initial={{ width: 0 }}
                               animate={{ width: `${Math.random() * 100}%` }}
                               transition={{ duration: 1, delay: i * 0.2 }}
-                              className={`h-full rounded-full bg-${services[activeService].color}-500`}
+                              // Progress Bar Color
+                              className={`h-full rounded-full ${activeColors.dot}`}
                             />
                           </div>
                           <div className="w-12 text-right text-xs text-gray-500">

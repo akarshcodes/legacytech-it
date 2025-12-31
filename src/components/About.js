@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Eye, History, MapPin, Award, Users, AlertTriangle, Shield, TrendingUp, CheckCircle } from 'lucide-react';
+import { Target, Eye, History, MapPin, AlertTriangle, Shield, TrendingUp, CheckCircle } from 'lucide-react';
 
 const About = () => {
   return (

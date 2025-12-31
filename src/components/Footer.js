@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Shield, Mail, Phone, MapPin, 
-  Facebook, Twitter, Linkedin, Instagram,
-  Send, ChevronUp,
-  X
+  Facebook, Linkedin, Instagram,
+  Send, ChevronUp
 } from 'lucide-react';
 
 const Footer = () => {

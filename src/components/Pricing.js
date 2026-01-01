@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Check, X, Shield, Zap, Crown, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Check, X, Shield, Zap, Crown, ArrowRight, Info, X as CloseIcon } from 'lucide-react';
 
 const Pricing = () => {
   const [billingCycle, setBillingCycle] = useState('monthly');
+  const [selectedService, setSelectedService] = useState(null);
 
   const scrollToComparison = () => {
     document.getElementById('plan-comparison')?.scrollIntoView({ behavior: 'smooth' });
@@ -17,6 +18,10 @@ const Pricing = () => {
     alert("Thanks for purchasing!");
   };
 
+  const handleCloseModal = () => {
+    setSelectedService(null);
+  };
+
   const colorVariants = {
     blue: {
       border: 'border-gray-600 hover:border-blue-500', 
@@ -25,7 +30,8 @@ const Pricing = () => {
       iconText: 'text-blue-400',
       dot: 'bg-blue-500',
       title: 'text-blue-400',
-      btn: 'bg-white text-blue-600 hover:bg-gray-100' // Kept for 'Learn More' buttons
+      btn: 'bg-white text-blue-600 hover:bg-gray-100',
+      modalAccent: 'bg-blue-600'
     },
     purple: {
       border: 'border-gray-600 hover:border-purple-500',
@@ -34,7 +40,8 @@ const Pricing = () => {
       iconText: 'text-purple-400',
       dot: 'bg-purple-500',
       title: 'text-purple-400',
-      btn: 'bg-white text-purple-600 hover:bg-gray-100'
+      btn: 'bg-white text-purple-600 hover:bg-gray-100',
+      modalAccent: 'bg-purple-600'
     },
     yellow: {
       border: 'border-gray-600 hover:border-yellow-500',
@@ -43,7 +50,8 @@ const Pricing = () => {
       iconText: 'text-yellow-400',
       dot: 'bg-yellow-500',
       title: 'text-yellow-400',
-      btn: 'bg-white text-yellow-600 hover:bg-gray-100'
+      btn: 'bg-white text-yellow-600 hover:bg-gray-100',
+      modalAccent: 'bg-yellow-600'
     }
   };
 
@@ -140,19 +148,117 @@ const Pricing = () => {
       price: 5000,
       description: 'Security assessment for official certification',
       features: ['Full System Analysis', 'Compliance Report', 'Remediation Plan', 'Certification Support'],
-      color: 'blue'
+      color: 'blue',
+      modalDetails: {
+        intro: "Our One-Time Deep Audit is a forensic-level examination of your entire digital infrastructure, designed for businesses preparing for ISO 27001 certification or major regulatory audits.",
+        benefits: [
+          "Identifies hidden vulnerabilities that automated scanners miss.",
+          "Provides a comprehensive roadmap for security hardening.",
+          "Includes a formal executive presentation of findings.",
+          "Validates 3rd-party vendor security connections."
+        ],
+        process: "We deploy a team of senior security analysts to your site (or remotely) for a 3-day intensive review period, followed by 1 week of report generation."
+      }
     },
     {
       name: 'Employee Training',
       price: 1500,
       description: 'Phishing awareness and cybersecurity training',
       features: ['4-Hour Workshop', 'Simulated Attacks', 'Certificates', 'Follow-up Assessment'],
-      color: 'purple'
+      color: 'purple',
+      modalDetails: {
+        intro: "Human error causes 95% of cybersecurity breaches. Our interactive Employee Training workshop transforms your staff from your biggest risk into your first line of defense.",
+        benefits: [
+          "Hands-on simulation of modern phishing and social engineering attacks.",
+          "Customized content relevant to your specific industry.",
+          "Gamified learning experience to increase engagement.",
+          "Post-training metrics to track improvement over time."
+        ],
+        process: "A 4-hour immersive session held at your office or virtually, capable of accommodating up to 30 employees per session."
+      }
     }
   ];
 
   return (
-    <section id="pricing" className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+    <section id="pricing" className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 relative">
+      
+      {/* Service Detail Modal */}
+      <AnimatePresence>
+        {selectedService && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-sm"
+            onClick={handleCloseModal}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-gray-800 border border-gray-700 rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden relative"
+            >
+              {/* Modal Header */}
+              <div className={`p-6 ${colorVariants[selectedService.color].modalAccent} relative`}>
+                <button 
+                  onClick={handleCloseModal}
+                  className="absolute top-4 right-4 text-white/80 hover:text-white bg-black/20 hover:bg-black/40 rounded-full p-1 transition-colors"
+                >
+                  <CloseIcon className="w-5 h-5" />
+                </button>
+                <h3 className="text-2xl font-bold text-white mb-1">{selectedService.name}</h3>
+                <p className="text-white/90 font-medium">RM {selectedService.price} <span className="text-sm opacity-75 font-normal">/ session</span></p>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-6">
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  {selectedService.modalDetails.intro}
+                </p>
+
+                <div className="mb-6">
+                  <h4 className="text-white font-bold mb-3 flex items-center">
+                    <Check className={`w-5 h-5 mr-2 ${colorVariants[selectedService.color].title}`} />
+                    Key Benefits
+                  </h4>
+                  <ul className="space-y-2">
+                    {selectedService.modalDetails.benefits.map((benefit, idx) => (
+                      <li key={idx} className="flex items-start text-sm text-gray-400">
+                        <div className={`w-1.5 h-1.5 rounded-full mt-1.5 mr-2 flex-shrink-0 ${colorVariants[selectedService.color].dot}`} />
+                        {benefit}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50 mb-6">
+                  <h4 className="text-white text-sm font-bold mb-2">Implementation Process</h4>
+                  <p className="text-xs text-gray-400 leading-relaxed">
+                    {selectedService.modalDetails.process}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                    <button 
+                      onClick={handleCloseModal}
+                      className="w-full py-2.5 rounded-lg font-semibold text-gray-300 bg-gray-700 hover:bg-gray-600 transition-colors"
+                    >
+                      Close
+                    </button>
+                    <button 
+                      onClick={() => { handlePurchase(); handleCloseModal(); }}
+                      className={`w-full py-2.5 rounded-lg font-bold text-white shadow-lg transition-transform active:scale-95 ${colorVariants[selectedService.color].modalAccent} hover:brightness-110`}
+                    >
+                      Book Now
+                    </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 1. Choose Your Protection Level (Plan Details) */}
@@ -466,12 +572,13 @@ const Pricing = () => {
                     </div>
                   ))}
                 </div>
-                {/* Buy Now Button */}
+                {/* Learn More Button */}
                 <button 
-                  onClick={handlePurchase}
-                  className="w-full py-3 font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl active:scale-95"
+                  onClick={() => setSelectedService(service)}
+                  className="w-full py-3 font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl active:scale-95 flex items-center justify-center"
                 >
-                  Buy Now
+                  <Info className="w-5 h-5 mr-2" />
+                  Learn More
                 </button>
               </motion.div>
             );

@@ -50,7 +50,7 @@ const Team = () => {
         email: "akarshh.pvt@gmail.com",
         linkedin: "linkedin.com",
         github: "github.com/akarshcodes",
-        phone: "+6012-345 6789"
+        phone: "+6016-4194960"
       },
       color: "blue"
     },

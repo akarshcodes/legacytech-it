@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Monitor, Shield, BarChart, Zap, 
-  FileCheck, AlertTriangle, Cpu, Globe
+  Monitor, BarChart, Zap, 
+  FileCheck, AlertTriangle
 } from 'lucide-react';
 
 const Services = () => {

@@ -455,7 +455,7 @@ const Pricing = () => {
         {/* Pricing Cards Grid with Buy Now Button */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {plans.map((plan, index) => {
-             const styles = colorVariants[plan.color];
+            //  const styles = colorVariants[plan.color];
              return (
             <motion.div
               key={index}

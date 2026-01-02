@@ -55,7 +55,7 @@ const Team = () => {
       color: "blue"
     },
     {
-      name: "Anyi",
+      name: "Ong An Yi",
       role: "CTO & Co-Founder",
       image: '/images/founder2.png',
       bio: "Technical architect and security specialist. Leads the development of SentryNode OS Monitor and real-time threat detection systems.",
@@ -69,7 +69,7 @@ const Team = () => {
       color: "purple"
     },
     {
-      name: "HooiQi",
+      name: "Gooi Hooi Qi",
       role: "CPO & Co-Founder",
       image: '/images/founder3.png',
       bio: "UI/UX designer and product manager. Focuses on creating intuitive, actionable security dashboards that SMEs can actually understand and use effectively.",

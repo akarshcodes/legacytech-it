@@ -174,8 +174,8 @@ const Hero = () => {
           <source src="/images/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        
-        {/* Custom Mute/Unmute Button */}
+
+        {/* Custom Mute/Unmute Button Overlay */}
         <button 
           onClick={toggleMute}
           className="absolute bottom-8 right-8 p-3 bg-black/50 hover:bg-black/70 text-white rounded-full backdrop-blur-sm transition-all z-10 flex items-center space-x-2"

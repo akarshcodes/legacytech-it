@@ -48,7 +48,7 @@ const Team = () => {
       expertise: ["Business Strategy", "Cybersecurity Sales", "SME Market"],
       contact: {
         email: "akarshh.pvt@gmail.com",
-        linkedin: "linkedin.com",
+        linkedin: "linkedin.com/",
         github: "github.com/akarshcodes",
         phone: "+6016-4194960"
       },

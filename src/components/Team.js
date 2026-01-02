@@ -38,6 +38,7 @@ const Team = () => {
     }
   };
 
+  {/* Team Members Info */}
   const teamMembers = [
     {
       name: "Akarsh Srivastava",

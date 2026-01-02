@@ -40,7 +40,7 @@ const Footer = () => {
                 <MapPin className="h-5 w-5 text-blue-400 mr-3" />
                 <span className="text-gray-300">
                   Level 23, Hunza Towers,<br />
-                  Georgetown, 10000 Penang
+                  Bayan Lepas, 11000 Penang
                 </span>
               </div>
               <div className="flex items-center">

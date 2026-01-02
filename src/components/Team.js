@@ -295,7 +295,7 @@ const Team = () => {
                             </a>
                           )}
                           {teamMembers[activeMember].contact.github && (
-                            <a href={`https://${teamMembers[activeMember].contact.github}`} className="text-gray-300 hover:underline text-sm">
+                            <a href={`https://${teamMembers[activeMember].contact.github}`} className="text-blue-400 hover:underline text-sm">
                               GitHub
                             </a>
                           )}
